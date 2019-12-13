@@ -11,7 +11,7 @@ class App extends Component {
         <Header />
         <Router>
           <ArticleList path="/" />
-          <SingleArticle path="/articles/*" />
+          <SingleArticle path="/articles/:article_id" />
         </Router>
       </div>
     );

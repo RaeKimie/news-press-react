@@ -6,3 +6,9 @@ exports.fetchAllArticles = () => {
     return data.articles;
   });
 };
+
+exports.fetchSingleArticle = article_id => {
+  return axios.get(`${baseUrl}/articles/${article_id}`).then(({ data }) => {
+    return data.article;
+  });
+};
