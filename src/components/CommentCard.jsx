@@ -6,7 +6,7 @@ class CommentCard extends Component {
 
     return (
       <div className="single-comment">
-        <p>
+        <p className="grey-italic">
           created by {author} time:{created_at}
         </p>
         <p>{body}</p>

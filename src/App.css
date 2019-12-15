@@ -1,12 +1,16 @@
 .App {
   text-align: center;
 }
+.grey-italic {
+  color: grey;
+  font-style: italic;
+}
 .single-article,
 .single-comment {
   text-align: left;
   padding: 30px;
   margin: 0px 40px 10px 40px;
-  border-style: double;
+  border-style: solid;
   border-width: 1px;
   border-color: lightgrey;
 }

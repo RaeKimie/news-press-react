@@ -23,8 +23,9 @@ class SingleArticle extends Component {
     return (
       <article>
         <div className="single-article">
+          <p className="grey-italic">{article.topic}</p>
           <h1> {article.title}</h1>
-          <p>
+          <p className="grey-italic">
             posted by {article.author}. posted time: {article.created_at}
           </p>
           <p>{article.body}</p>
