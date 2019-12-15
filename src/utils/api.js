@@ -12,3 +12,9 @@ exports.fetchSingleArticle = article_id => {
     return data.article;
   });
 };
+
+exports.fetchAllComments = uri => {
+  return axios.get(`${baseUrl}/${uri}`).then(({ data }) => {
+    return data.comments;
+  });
+};

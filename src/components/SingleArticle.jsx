@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import CommentList from "./CommentList";
+import { Router, Link } from "@reach/router";
 import Loader from "./Loader";
 import * as api from "../utils/api";
+
 class SingleArticle extends Component {
   state = { article: {}, isLoading: true };
 
@@ -16,6 +18,7 @@ class SingleArticle extends Component {
 
   render() {
     const { article, isLoading } = this.state;
+
     if (isLoading) return <Loader />;
     return (
       <article>
@@ -25,10 +28,13 @@ class SingleArticle extends Component {
             posted by {article.author}. posted time: {article.created_at}
           </p>
           <p>{article.body}</p>
-          <p>{article.comment_count} comment</p>
+          <Link to={`/articles/${article.article_id}/comments`}>
+            <p>{article.comment_count} comments </p>
+          </Link>
         </div>
-
-        <CommentList />
+        <Router>
+          <CommentList path="comments" />
+        </Router>
       </article>
     );
   }
