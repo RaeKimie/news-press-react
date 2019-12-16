@@ -8,7 +8,9 @@ class NavBar extends Component {
         <Link to="/">
           <button>Home</button>
         </Link>
-        <button>Sign in</button>
+        <Link to="/sign-in">
+          <button>Sign in</button>
+        </Link>
       </nav>
     );
   }
