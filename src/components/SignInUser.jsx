@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import WelcomeUser from "./WelcomeUser";
-//import { Link } from "@reach/router";
+import ErrDisplayer from "./ErrDisplayer";
 
 class SignInUser extends Component {
-  state = { user: { username: "", avatar_url: "", name: "" }, isUser: false };
+  state = {
+    user: { username: "", avatar_url: "", name: "" },
+    isUser: false,
+    err: ""
+  };
 
   handleChange = event => {
     const value = event.target.value;
@@ -36,11 +40,17 @@ class SignInUser extends Component {
             user: { ...currentState.user, username: "" }
           };
         });
+      })
+      .catch(({ response }) => {
+        const msg = `${response.status} ${response.data.msg}`;
+        this.setState({ err: msg, isLoading: false });
       });
   };
 
   render() {
-    const { user, isUser } = this.state;
+    const { user, isUser, err } = this.state;
+    if (err) return <ErrDisplayer err={err} />;
+
     return (
       <main className="user-login">
         {isUser ? (
