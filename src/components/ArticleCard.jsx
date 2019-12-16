@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import { formatTime } from "../utils/utils";
 
 const ArticleCard = ({
   article_id,
@@ -10,6 +11,7 @@ const ArticleCard = ({
   votes,
   comment_count
 }) => {
+  const time = formatTime(created_at);
   return (
     <div className="single-article">
       <p className="grey-italic">{topic}</p>
@@ -20,7 +22,7 @@ const ArticleCard = ({
         votes: {votes} comments: {comment_count}
       </p>
       <p className="grey-italic">
-        created by {author} time: {created_at}
+        created by {author} {time}
       </p>
     </div>
   );

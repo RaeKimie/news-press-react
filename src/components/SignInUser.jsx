@@ -56,6 +56,7 @@ class SignInUser extends Component {
                 onChange={this.handleChange}
               />
             </label>
+            <p className="grey-italic">e.g. tickle122</p>
             <button>Sign in</button>
           </form>
         )}

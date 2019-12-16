@@ -21,6 +21,9 @@ class CommentAdder extends Component {
     return (
       <form className="single-comment" onSubmit={this.handleSubmit}>
         <label>
+          {!this.state.username && (
+            <p className="grey-italic">Please sign in to leave a comment...</p>
+          )}
           Post a new comment
           <br />
           <input
