@@ -3,23 +3,31 @@ import CommentList from "./CommentList";
 import { Router, Link } from "@reach/router";
 import Loader from "./Loader";
 import * as api from "../utils/api";
+import ErrDisplayer from "./ErrDisplayer";
 
 class SingleArticle extends Component {
-  state = { article: {}, isLoading: true };
+  state = { article: {}, isLoading: true, err: "" };
 
   componentDidMount() {
     this.getSingleArticle();
   }
   getSingleArticle() {
-    api.fetchSingleArticle(this.props.article_id).then(article => {
-      this.setState({ article, isLoading: false });
-    });
+    api
+      .fetchSingleArticle(this.props.article_id)
+      .then(article => {
+        this.setState({ article, isLoading: false });
+      })
+      .catch(({ response }) => {
+        const msg = `${response.status} ${response.data.msg}`;
+        this.setState({ err: msg, isLoading: false });
+      });
   }
 
   render() {
-    const { article, isLoading } = this.state;
+    const { article, isLoading, err } = this.state;
 
     if (isLoading) return <Loader />;
+    if (err) return <ErrDisplayer err={err} />;
     return (
       <article>
         <div className="single-article">

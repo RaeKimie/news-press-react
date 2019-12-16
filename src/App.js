@@ -4,6 +4,7 @@ import "./App.css";
 import { Router } from "@reach/router";
 import SingleArticle from "./components/SingleArticle";
 import ArticleList from "./components/ArticleList";
+import ErrDisplayer from "./components/ErrDisplayer";
 class App extends Component {
   render() {
     return (
@@ -12,6 +13,7 @@ class App extends Component {
         <Router>
           <ArticleList path="/" />
           <SingleArticle path="/articles/:article_id/*" />
+          <ErrDisplayer default />
         </Router>
       </div>
     );

@@ -23,6 +23,7 @@ class SortBy extends Component {
             value={this.state.author}
           />
         </label>
+        {/*add more properties in state,add select options with name attribute, and give onChange, go to articleList*/}
         <button> submit </button>
       </form>
     );
