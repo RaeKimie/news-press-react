@@ -6,24 +6,35 @@ import * as api from "../utils/api";
 import ArticleCard from "./ArticleCard";
 
 class ArticleList extends Component {
-  state = { articles: [], isLoading: true };
+  state = { articles: [], isLoading: true, author: "" };
 
   componentDidMount() {
     this.getAllArticles();
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.author !== this.state.author) this.getAllArticles();
+  }
 
   getAllArticles() {
-    api.fetchAllArticles().then(articles => {
-      this.setState({ articles, isLoading: false });
+    api.fetchAllArticles(this.state.author).then(articles => {
+      this.setState(currentState => {
+        return { ...currentState, articles, isLoading: false };
+      });
     });
   }
+
+  addSorter = author => {
+    this.setState(currentState => {
+      return { ...currentState, author };
+    });
+  };
 
   render() {
     const { isLoading, articles } = this.state;
     if (isLoading) return <Loader />;
     return (
       <article>
-        <SortBy />
+        <SortBy addSorter={this.addSorter} />
         <br />
 
         {articles.map(article => {
