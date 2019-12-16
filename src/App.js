@@ -8,18 +8,16 @@ import ErrDisplayer from "./components/ErrDisplayer";
 import SignInUser from "./components/SignInUser";
 
 class App extends Component {
-  state = { username: "", avatar_url: "", name: "" };
+  state = { user: {} };
 
   addUserInfo = userInfo => {
-    this.setState({ ...userInfo }, () => {
-      console.log(this.state, "App state");
-    });
+    this.setState({ ...userInfo });
   };
 
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header user={this.state} />
         <Router>
           <ArticleList path="/" user={this.state} />
           <SignInUser path="/sign-in" addUserInfo={this.addUserInfo} />

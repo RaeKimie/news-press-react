@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import WelcomeUser from "./WelcomeUser";
 //import { Link } from "@reach/router";
 
 class SignInUser extends Component {
-  state = { username: "", avatar_url: "", name: "" };
+  state = { user: { username: "", avatar_url: "", name: "" }, isUser: false };
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    const value = event.target.value;
+    this.setState(currentState => {
+      return {
+        ...currentState,
+        user: { ...currentState.user, username: value }
+      };
+    });
   };
   handleSubmit = event => {
     event.preventDefault();
@@ -15,33 +22,43 @@ class SignInUser extends Component {
 
   getUserInfo = () => {
     api
-      .fetchUserInfo(this.state.username)
+      .fetchUserInfo(this.state.user.username)
       .then(user => {
-        this.setState({ ...user });
+        this.setState({ user, isUser: true });
       })
       .then(() => {
-        this.props.addUserInfo(this.state);
+        this.props.addUserInfo(this.state.user);
       })
       .then(() => {
-        this.setState({ username: "", avatar_url: "", name: "" });
+        this.setState(currentState => {
+          return {
+            ...currentState,
+            user: { ...currentState.user, username: "" }
+          };
+        });
       });
   };
 
   render() {
+    const { user, isUser } = this.state;
     return (
-      <main>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Username:
-            <input
-              name="username"
-              type="text"
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-          </label>
-          <button>Sign in</button>
-        </form>
+      <main className="user-login">
+        {isUser ? (
+          <WelcomeUser user={user} />
+        ) : (
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Username:
+              <input
+                name="username"
+                type="text"
+                value={this.state.user.username}
+                onChange={this.handleChange}
+              />
+            </label>
+            <button>Sign in</button>
+          </form>
+        )}
       </main>
     );
   }

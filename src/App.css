@@ -1,9 +1,20 @@
 .App {
   text-align: center;
 }
+.user {
+  text-align: right;
+}
 .grey-italic {
   color: grey;
   font-style: italic;
+}
+.user-login {
+  text-align: center;
+  padding: 30px;
+  margin: 0px 40px 10px 40px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgrey;
 }
 .single-article,
 .single-comment {
