@@ -7,21 +7,31 @@ import ArticleCard from "./ArticleCard";
 import ErrDisplayer from "./ErrDisplayer";
 
 class ArticleList extends Component {
-  state = { articles: [], isLoading: true, err: "", author: "" };
-  //add more properties in this state. (query)
+  state = {
+    articles: [],
+    isLoading: true,
+    err: "",
+    author: "",
+    topic: "",
+    sort_by: "created_at"
+  };
+
   componentDidMount() {
     this.getAllArticles();
   }
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.author !== this.state.author)
-      //add more logic here when preve.state.query is not the same
+    if (
+      prevState.author !== this.state.author ||
+      prevState.topic !== this.state.topic ||
+      prevState.sort_by !== this.state.sort_by
+    )
       this.getAllArticles();
   }
 
   getAllArticles() {
-    //give more query to the fetchAllArticles
+    const { author, topic, sort_by } = this.state;
     api
-      .fetchAllArticles(this.state.author)
+      .fetchAllArticles(author, topic, sort_by)
       .then(articles => {
         this.setState(currentState => {
           return { ...currentState, articles, isLoading: false };
@@ -33,9 +43,9 @@ class ArticleList extends Component {
       });
   }
 
-  addSorter = author => {
+  addSorter = (author, topic, sort_by) => {
     this.setState(currentState => {
-      return { ...currentState, author };
+      return { ...currentState, author, topic, sort_by };
     });
   };
 

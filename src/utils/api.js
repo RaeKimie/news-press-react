@@ -1,9 +1,10 @@
 const axios = require("axios");
 
 const baseUrl = "https://news-press.herokuapp.com/api";
-exports.fetchAllArticles = author => {
+exports.fetchAllArticles = (author, topic, sort_by) => {
+  console.log(sort_by);
   return axios
-    .get(`${baseUrl}/articles`, { params: { author } })
+    .get(`${baseUrl}/articles`, { params: { author, topic, sort_by } })
     .then(({ data }) => {
       return data.articles;
     });
