@@ -17,7 +17,6 @@ class ArticleList extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props, "in article list checking app state");
     this.getAllArticles();
   }
   componentDidUpdate(prevProps, prevState) {

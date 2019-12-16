@@ -42,7 +42,7 @@ class SingleArticle extends Component {
           </Link>
         </div>
         <Router>
-          <CommentList path="comments" />
+          <CommentList path="comments" user={this.props.user} />
         </Router>
       </article>
     );

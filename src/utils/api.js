@@ -26,3 +26,9 @@ exports.fetchUserInfo = username => {
     return data.user;
   });
 };
+
+exports.postComment = (uri, newComment) => {
+  return axios.post(`${baseUrl}/${uri}`, newComment).then(({ data }) => {
+    return data.comment;
+  });
+};

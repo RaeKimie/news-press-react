@@ -4,6 +4,11 @@
 .user {
   text-align: right;
 }
+.comment-area {
+  width: 80%;
+  min-height: 80px;
+  overflow-y: auto;
+}
 .grey-italic {
   color: grey;
   font-style: italic;
