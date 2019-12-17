@@ -32,3 +32,11 @@ exports.postComment = (uri, newComment) => {
     return data.comment;
   });
 };
+
+exports.patchVotes = (id, ammount) => {
+  return axios
+    .patch(`${baseUrl}/articles/${id}`, { inc_votes: ammount })
+    .then(({ data }) => {
+      return data;
+    });
+};

@@ -4,6 +4,7 @@ import { Router, Link } from "@reach/router";
 import Loader from "./Loader";
 import * as api from "../utils/api";
 import ErrDisplayer from "./ErrDisplayer";
+import Voter from "./Voter";
 
 class SingleArticle extends Component {
   state = { article: {}, isLoading: true, err: "" };
@@ -30,6 +31,7 @@ class SingleArticle extends Component {
     if (err) return <ErrDisplayer err={err} />;
     return (
       <article>
+        <Voter article_id={this.props.article_id} votes={article.votes} />
         <div className="single-article">
           <p className="grey-italic">{article.topic}</p>
           <h1> {article.title}</h1>
