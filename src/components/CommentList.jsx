@@ -25,6 +25,12 @@ class CommentList extends Component {
     });
   };
 
+  removeComment = () => {
+    this.setState(currentState => {
+      return currentState;
+    });
+  };
+
   render() {
     const { isLoading, comments } = this.state;
     if (isLoading) return <Loader />;
@@ -36,7 +42,14 @@ class CommentList extends Component {
           addNewComment={this.addNewComment}
         />
         {comments.map(comment => {
-          return <CommentCard key={comment.comment_id} {...comment} />;
+          return (
+            <CommentCard
+              key={comment.comment_id}
+              {...comment}
+              user={this.props.user}
+              removeComment={this.removeComment}
+            />
+          );
         })}
       </div>
     );

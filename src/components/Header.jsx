@@ -7,7 +7,7 @@ const Header = props => {
     <header>
       <h1>News-press</h1>
       <NavBar />
-      {name && <p className="user">logged in: {name}</p>}
+      {name && <p className="user">{name}</p>}
     </header>
   );
 };

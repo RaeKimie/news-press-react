@@ -3,6 +3,7 @@
 }
 .user {
   text-align: right;
+  font-weight: bold;
 }
 .comment-area {
   width: 80%;
