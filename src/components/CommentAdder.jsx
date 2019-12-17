@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import Loader from "./Loader";
 
 class CommentAdder extends Component {
-  state = { username: this.props.user.username, body: "" };
+  state = { username: this.props.user.username, body: "", isLoading: false };
 
   handleChange = event => {
     const value = event.target.value;
@@ -11,20 +12,25 @@ class CommentAdder extends Component {
     });
   };
   handleSubmit = event => {
+    const newComment = { username: this.state.username, body: this.state.body };
     event.preventDefault();
+    this.setState(currentState => {
+      return { ...currentState, isLoading: true };
+    });
     api
-      .postComment(this.props.uri, this.state)
+      .postComment(this.props.uri, newComment)
       .then(comment => {
         this.props.addNewComment(comment);
       })
       .then(() => {
         this.setState(currentState => {
-          return { ...currentState, body: "" };
+          return { ...currentState, body: "", isLoading: false };
         });
       });
   };
 
   render() {
+    if (this.state.isLoading) return <Loader />;
     return (
       <form className="single-comment" onSubmit={this.handleSubmit}>
         <label>
