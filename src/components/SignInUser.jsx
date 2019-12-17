@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import WelcomeUser from "./WelcomeUser";
 import ErrDisplayer from "./ErrDisplayer";
+import Loader from "./Loader";
 
 class SignInUser extends Component {
   state = {
     user: { username: "", avatar_url: "", name: "" },
     isUser: false,
+    isLoading: false,
     err: ""
   };
 
@@ -25,10 +27,11 @@ class SignInUser extends Component {
   };
 
   getUserInfo = () => {
+    this.setState({ isLoading: true });
     api
       .fetchUserInfo(this.state.user.username)
       .then(user => {
-        this.setState({ user, isUser: true });
+        this.setState({ user, isUser: true, isLoading: false });
       })
       .then(() => {
         this.props.addUserInfo(this.state.user);
@@ -48,6 +51,7 @@ class SignInUser extends Component {
   };
 
   render() {
+    if (this.state.isLoading) return <Loader />;
     const { isUser, err } = this.state;
     if (err) return <ErrDisplayer err={err} />;
 
@@ -66,7 +70,7 @@ class SignInUser extends Component {
                 onChange={this.handleChange}
               />
             </label>
-            <p className="grey-italic">e.g. tickle122</p>
+            <p className="grey-italic">e.g. tickle122 or jessjelly</p>
             <button>Sign in</button>
           </form>
         )}
