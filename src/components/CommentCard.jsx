@@ -12,14 +12,7 @@ class CommentCard extends Component {
   };
 
   render() {
-    const {
-      author,
-      created_at,
-      votes,
-      body,
-      comment_id,
-      removeComment
-    } = this.props;
+    const { author, created_at, votes, body, comment_id } = this.props;
     const time = formatTime(created_at);
 
     if (this.state.isDelete)
