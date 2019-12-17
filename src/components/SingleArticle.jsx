@@ -31,7 +31,6 @@ class SingleArticle extends Component {
     if (err) return <ErrDisplayer err={err} />;
     return (
       <article>
-        <Voter article_id={this.props.article_id} votes={article.votes} />
         <div className="single-article">
           <p className="grey-italic">{article.topic}</p>
           <h1> {article.title}</h1>
@@ -39,6 +38,7 @@ class SingleArticle extends Component {
             posted by {article.author}. posted time: {article.created_at}
           </p>
           <p>{article.body}</p>
+          <Voter article_id={this.props.article_id} votes={article.votes} />
           <Link to={`/articles/${article.article_id}/comments`}>
             <p>{article.comment_count} comments </p>
           </Link>

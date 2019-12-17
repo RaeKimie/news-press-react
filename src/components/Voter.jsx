@@ -16,16 +16,20 @@ class Voter extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="btn-group">
         <button
+          className="btn color"
           onClick={this.handleClick}
           value={1}
           disabled={this.state.newVote > 0}
         >
           +
         </button>
-        <h5>{this.props.votes + this.state.newVote}</h5>
+        <button className="btn" disabled={true}>
+          {this.props.votes + this.state.newVote}
+        </button>
         <button
+          className="btn color"
           onClick={this.handleClick}
           value={-1}
           disabled={this.state.newVote < 0}
