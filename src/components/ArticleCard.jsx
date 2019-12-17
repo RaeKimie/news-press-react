@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import { formatTime } from "../utils/utils";
+import Voter from "./Voter";
 
 const ArticleCard = ({
   article_id,
@@ -15,15 +16,17 @@ const ArticleCard = ({
   return (
     <div className="single-article">
       <p className="grey-italic">{topic}</p>
+
       <Link to={`/articles/${article_id}`}>
         <h2>{title}</h2>
       </Link>
-      <p>
-        votes: {votes} comments: {comment_count}
-      </p>
+
+      <p>comments: {comment_count}</p>
+
       <p className="grey-italic">
         created by {author} {time}
       </p>
+      <Voter id={article_id} votes={votes} type="articles" />
     </div>
   );
 };

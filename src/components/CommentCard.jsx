@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { formatTime } from "../utils/utils";
+import Voter from "./Voter";
 
 class CommentCard extends Component {
   state = { username: this.props.user.username };
@@ -20,8 +21,7 @@ class CommentCard extends Component {
           created by {author} {time}
         </p>
         <p>{body}</p>
-        <p>{votes} votes</p>
-        {}
+        <Voter id={comment_id} votes={votes} type="comments" />
       </div>
     );
   }

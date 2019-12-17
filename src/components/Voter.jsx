@@ -12,7 +12,7 @@ class Voter extends Component {
         newVote: currentState.newVote + +value
       };
     });
-    api.patchVotes(this.props.article_id, value);
+    api.patchVotes(this.props.id, value);
   };
   render() {
     return (
