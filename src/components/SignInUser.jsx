@@ -53,8 +53,8 @@ class SignInUser extends Component {
 
     return (
       <main className="user-login">
-        {isUser ? (
-          <WelcomeUser user={user} />
+        {isUser || this.props.user.username ? (
+          <WelcomeUser user={this.props.user} />
         ) : (
           <form onSubmit={this.handleSubmit}>
             <label>

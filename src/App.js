@@ -20,7 +20,11 @@ class App extends Component {
         <Header user={this.state} />
         <Router>
           <ArticleList path="/" user={this.state} />
-          <SignInUser path="/sign-in" addUserInfo={this.addUserInfo} />
+          <SignInUser
+            path="/sign-in"
+            addUserInfo={this.addUserInfo}
+            user={this.state}
+          />
           <SingleArticle path="/articles/:article_id/*" user={this.state} />
           <ErrDisplayer default />
         </Router>

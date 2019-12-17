@@ -6,7 +6,7 @@ const Header = props => {
   return (
     <header>
       <h1>News-press</h1>
-      <NavBar />
+      <NavBar user={name} />
       {name && <p className="user">{name}</p>}
     </header>
   );

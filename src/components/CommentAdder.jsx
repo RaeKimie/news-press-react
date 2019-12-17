@@ -12,9 +12,16 @@ class CommentAdder extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    api.postComment(this.props.uri, this.state).then(comment => {
-      this.props.addNewComment(comment);
-    });
+    api
+      .postComment(this.props.uri, this.state)
+      .then(comment => {
+        this.props.addNewComment(comment);
+      })
+      .then(() => {
+        this.setState(currentState => {
+          return { ...currentState, body: "" };
+        });
+      });
   };
 
   render() {
@@ -30,6 +37,7 @@ class CommentAdder extends Component {
             className="comment-area"
             type="text"
             name="body"
+            value={this.state.body}
             onChange={this.handleChange}
           />
         </label>

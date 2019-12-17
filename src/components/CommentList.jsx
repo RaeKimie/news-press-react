@@ -36,11 +36,13 @@ class CommentList extends Component {
     if (isLoading) return <Loader />;
     return (
       <div>
-        <CommentAdder
-          user={this.props.user}
-          uri={this.props.uri}
-          addNewComment={this.addNewComment}
-        />
+        {this.props.user.username && (
+          <CommentAdder
+            user={this.props.user}
+            uri={this.props.uri}
+            addNewComment={this.addNewComment}
+          />
+        )}
         {comments.map(comment => {
           return (
             <CommentCard
