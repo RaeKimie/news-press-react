@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import * as api from "../utils/api";
 
 class CommentRemover extends Component {
   state = { isDelete: false };
@@ -7,7 +8,11 @@ class CommentRemover extends Component {
       return { isDelete: !currentState.isDelete };
     });
   };
-  handleDelete = event => {};
+  handleDelete = event => {
+    api.deleteComment(this.props.comment_id).then(() => {
+      this.props.removeComment();
+    });
+  };
   render() {
     return (
       <div>
@@ -15,7 +20,8 @@ class CommentRemover extends Component {
           <button onClick={this.handleClick}>delete</button>
         ) : (
           <p>
-            Are you sure you want to delete this comment? <button>yes</button>
+            Are you sure you want to delete this comment?{" "}
+            <button onClick={this.handleDelete}>yes</button>
             <button onClick={this.handleClick}>no</button>
           </p>
         )}

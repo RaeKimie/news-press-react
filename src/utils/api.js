@@ -40,3 +40,9 @@ exports.patchVotes = (id, ammount) => {
       return data;
     });
 };
+
+exports.deleteComment = comment_id => {
+  return axios.delete(`${baseUrl}/comments/${comment_id}`).then(({ data }) => {
+    return data;
+  });
+};

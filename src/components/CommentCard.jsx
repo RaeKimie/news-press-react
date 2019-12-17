@@ -37,7 +37,7 @@ class CommentCard extends Component {
         <Voter id={comment_id} votes={votes} type="comments" /> <br />
         {this.state.username && this.state.username === author && (
           <CommentRemover
-            commen_id={comment_id}
+            comment_id={comment_id}
             removeComment={this.removeComment}
           />
         )}
