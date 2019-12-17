@@ -25,12 +25,6 @@ class CommentList extends Component {
     });
   };
 
-  removeComment = () => {
-    this.setState(currentState => {
-      return currentState;
-    });
-  };
-
   render() {
     const { isLoading, comments } = this.state;
     if (isLoading) return <Loader />;

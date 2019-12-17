@@ -48,7 +48,7 @@ class SignInUser extends Component {
   };
 
   render() {
-    const { user, isUser, err } = this.state;
+    const { isUser, err } = this.state;
     if (err) return <ErrDisplayer err={err} />;
 
     return (
