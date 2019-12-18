@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import Loader from "./Loader";
+import ErrDisplayer from "./ErrDisplayer";
 
 class CommentAdder extends Component {
-  state = { username: this.props.user.username, body: "", isLoading: false };
+  state = {
+    username: this.props.user.username,
+    body: "",
+    isLoading: false,
+    err: ""
+  };
 
   handleChange = event => {
     const value = event.target.value;
@@ -17,26 +23,28 @@ class CommentAdder extends Component {
     this.setState(currentState => {
       return { ...currentState, isLoading: true };
     });
-    api
-      .postComment(this.props.uri, newComment)
-      .then(comment => {
-        this.props.addNewComment(comment);
-      })
-      .then(() => {
-        this.setState(currentState => {
-          return { ...currentState, body: "", isLoading: false };
+    if (newComment.body) {
+      api
+        .postComment(this.props.uri, newComment)
+        .then(comment => {
+          this.props.addNewComment(comment);
+        })
+        .then(() => {
+          this.setState(currentState => {
+            return { ...currentState, body: "", isLoading: false };
+          });
         });
-      });
+    } else {
+      this.setState({ err: "Please fill comment section!" });
+    }
   };
 
   render() {
+    if (this.state.err) return <ErrDisplayer err={this.state.err} />;
     if (this.state.isLoading) return <Loader />;
     return (
       <form className="single-comment" onSubmit={this.handleSubmit}>
         <label>
-          {!this.state.username && (
-            <p className="grey-italic">Please sign in to leave a comment...</p>
-          )}
           Post a new comment
           <br />
           <input

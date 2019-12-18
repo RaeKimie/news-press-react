@@ -8,16 +8,38 @@ class SortBy extends Component {
   };
   handleSubmit = event => {
     const { author, topic, sort_by } = this.state;
-    this.setState(currentState => {
-      return { ...currentState, isLoading: !currentState.isLoading };
-    });
+    this.setState(
+      currentState => {
+        return { ...currentState, isLoading: !currentState.isLoading };
+      },
+      () => {
+        console.log(
+          this.state,
+          "<-setState onSubmit, isLoading:!currentState.isLoading"
+        );
+      }
+    );
     event.preventDefault();
     this.props.addSorter(author, topic, sort_by);
-    this.setState({
-      author: "",
-      topic: "",
-      sort_by: "created_at"
-    });
+    this.setState(
+      {
+        author: "",
+        topic: "",
+        sort_by: "created_at"
+      },
+      () => {
+        console.log(this.state, "<-re-setting state without isLoading:false");
+      }
+    );
+    // this.setState(
+    //   currentState => {
+    //     return { ...currentState, isLoading: false };
+    //   },
+    //   () => {
+    //     console.log(this.state, "check2");
+    //   }
+    // );
+    //this.setState(currentState => {});
     // this.setState(currentState => {
     //   return {
     //     author: "",
