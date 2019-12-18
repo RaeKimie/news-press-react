@@ -25,29 +25,13 @@ class SortBy extends Component {
       {
         author: "",
         topic: "",
-        sort_by: "created_at"
+        sort_by: "created_at",
+        isLoading: false //<- just show submit on slow internet
       },
       () => {
         console.log(this.state, "<-re-setting state without isLoading:false");
       }
     );
-    // this.setState(
-    //   currentState => {
-    //     return { ...currentState, isLoading: false };
-    //   },
-    //   () => {
-    //     console.log(this.state, "check2");
-    //   }
-    // );
-    //this.setState(currentState => {});
-    // this.setState(currentState => {
-    //   return {
-    //     author: "",
-    //     topic: "",
-    //     sort_by: "created_at",
-    //     isLoading: !currentState.isLoading
-    //   };
-    // });
   };
   render() {
     return (
