@@ -33,7 +33,9 @@ class SingleArticle extends Component {
       <article>
         <div className="single-article">
           <p className="grey-italic">{article.topic}</p>
-          <h1> {article.title}</h1>
+          <Link to={`/articles/${article.article_id}`}>
+            <h1> {article.title}</h1>
+          </Link>
           <p className="grey-italic">
             posted by {article.author}. posted time: {article.created_at}
           </p>

@@ -1,37 +1,16 @@
 import React, { Component } from "react";
 
 class SortBy extends Component {
-  state = { author: "", topic: "", sort_by: "created_at", isLoading: false };
+  state = { author: "", topic: "", sort_by: "created_at" };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
   handleSubmit = event => {
-    const { author, topic, sort_by } = this.state;
-    this.setState(
-      currentState => {
-        return { ...currentState, isLoading: !currentState.isLoading };
-      },
-      () => {
-        console.log(
-          this.state,
-          "<-setState onSubmit, isLoading:!currentState.isLoading"
-        );
-      }
-    );
     event.preventDefault();
+    const { author, topic, sort_by } = this.state;
     this.props.addSorter(author, topic, sort_by);
-    this.setState(
-      {
-        author: "",
-        topic: "",
-        sort_by: "created_at",
-        isLoading: false //<- just show submit on slow internet
-      },
-      () => {
-        console.log(this.state, "<-re-setting state without isLoading:false");
-      }
-    );
+    this.setState({ author: "", topic: "", sort_by: "created_at" });
   };
   render() {
     return (
@@ -58,11 +37,9 @@ class SortBy extends Component {
           <option value="votes">popular</option>
           <option value="comment_count">controversial</option>
         </select>
-        {!this.state.isLoading ? (
-          <button> submit </button>
-        ) : (
-          <button disabled={true}> Loading.. </button>
-        )}
+        <button disabled={this.props.isSorting}>
+          {!this.props.isSorting ? "Submit" : "Loading.."}
+        </button>
       </form>
     );
   }

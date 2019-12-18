@@ -35,7 +35,7 @@ class CommentAdder extends Component {
           });
         });
     } else {
-      this.setState({ err: "Please fill comment section!" });
+      this.setState({ err: "Please fill the comment section!" });
     }
   };
 

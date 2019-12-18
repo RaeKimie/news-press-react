@@ -13,7 +13,8 @@ class ArticleList extends Component {
     err: "",
     author: "",
     topic: "",
-    sort_by: "created_at"
+    sort_by: "created_at",
+    isSorting: false
   };
 
   componentDidMount() {
@@ -34,18 +35,33 @@ class ArticleList extends Component {
       .fetchAllArticles(author, topic, sort_by)
       .then(articles => {
         this.setState(currentState => {
-          return { ...currentState, articles, isLoading: false };
+          return {
+            ...currentState,
+            articles,
+            isLoading: false,
+            isSorting: false
+          };
         });
       })
       .catch(({ response }) => {
         const msg = `${response.status} ${response.data.msg}`;
-        this.setState({ err: msg, isLoading: false });
+        this.setState({
+          err: msg,
+          isLoading: false,
+          isSorting: false
+        });
       });
   }
 
   addSorter = (author, topic, sort_by) => {
     this.setState(currentState => {
-      return { ...currentState, author, topic, sort_by };
+      return {
+        ...currentState,
+        author,
+        topic,
+        sort_by,
+        isSorting: true
+      };
     });
   };
 
@@ -55,7 +71,7 @@ class ArticleList extends Component {
     if (err) return <ErrDisplayer err={err} />;
     return (
       <article>
-        <SortBy addSorter={this.addSorter} />
+        <SortBy addSorter={this.addSorter} isSorting={this.state.isSorting} />
         <br />
 
         {articles.map(article => {
