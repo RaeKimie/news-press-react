@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 
-import ErrDisplayer from "./ErrDisplayer";
-
 class CommentAdder extends Component {
   state = {
     username: this.props.user.username,
@@ -14,7 +12,7 @@ class CommentAdder extends Component {
   handleChange = event => {
     const value = event.target.value;
     this.setState(currentState => {
-      return { ...currentState, body: value };
+      return { ...currentState, body: value, err: "", isLoading: false };
     });
   };
   handleSubmit = event => {
@@ -35,13 +33,11 @@ class CommentAdder extends Component {
           });
         });
     } else {
-      this.setState({ err: "Please fill the comment section!" });
+      this.setState({ err: "error" });
     }
   };
 
   render() {
-    if (this.state.err) return <ErrDisplayer err={this.state.err} />;
-
     return (
       <form className="single-comment" onSubmit={this.handleSubmit}>
         <label>
@@ -53,11 +49,14 @@ class CommentAdder extends Component {
             name="body"
             value={this.state.body}
             onChange={this.handleChange}
+            placeholder={
+              this.state.err && "Oops! Don't forget to leave a comment!"
+            }
           />
         </label>
 
         <button className="button left" disabled={this.state.isLoading}>
-          {!this.state.isLoading ? "Add" : "Adding.."}
+          {!this.state.isLoading ? "Add" : "..."}
         </button>
       </form>
     );
