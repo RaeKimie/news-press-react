@@ -12,6 +12,13 @@ class SignInUser extends Component {
     err: ""
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.err)
+      this.setState(() => {
+        return { err: "" };
+      });
+  }
+
   handleChange = event => {
     const value = event.target.value;
     this.setState(currentState => {

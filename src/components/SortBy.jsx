@@ -10,7 +10,9 @@ class SortBy extends Component {
     event.preventDefault();
     const { author, topic, sort_by } = this.state;
     this.props.addSorter(author, topic, sort_by);
-    this.setState({ author: "", topic: "", sort_by: "created_at" });
+    this.setState(() => {
+      return { author: "" };
+    });
   };
   render() {
     return (

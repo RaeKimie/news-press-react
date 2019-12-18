@@ -27,6 +27,10 @@ class ArticleList extends Component {
       prevState.sort_by !== this.state.sort_by
     )
       this.getAllArticles();
+    if (prevState.err)
+      this.setState(() => {
+        return { err: "" };
+      });
   }
 
   getAllArticles() {
