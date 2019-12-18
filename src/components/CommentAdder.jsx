@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import Loader from "./Loader";
+
 import ErrDisplayer from "./ErrDisplayer";
 
 class CommentAdder extends Component {
@@ -41,7 +41,7 @@ class CommentAdder extends Component {
 
   render() {
     if (this.state.err) return <ErrDisplayer err={this.state.err} />;
-    if (this.state.isLoading) return <Loader />;
+
     return (
       <form className="single-comment" onSubmit={this.handleSubmit}>
         <label>
@@ -56,7 +56,9 @@ class CommentAdder extends Component {
           />
         </label>
 
-        <button className="button left">Add</button>
+        <button className="button left" disabled={this.state.isLoading}>
+          {!this.state.isLoading ? "Add" : "Adding.."}
+        </button>
       </form>
     );
   }
