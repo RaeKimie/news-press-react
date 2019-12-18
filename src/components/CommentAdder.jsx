@@ -56,7 +56,7 @@ class CommentAdder extends Component {
           />
         </label>
 
-        <button>Add</button>
+        <button className="button left">Add</button>
       </form>
     );
   }

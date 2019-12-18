@@ -24,6 +24,7 @@ class SortBy extends Component {
             name="author"
             onChange={this.handleChange}
             value={this.state.author}
+            className="left"
           />
         </label>
         Topic:
@@ -39,7 +40,7 @@ class SortBy extends Component {
           <option value="votes">popular</option>
           <option value="comment_count">controversial</option>
         </select>
-        <button disabled={this.props.isSorting}>
+        <button disabled={this.props.isSorting} className="button left">
           {!this.props.isSorting ? "Submit" : "Loading.."}
         </button>
       </form>

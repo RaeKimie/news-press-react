@@ -4,11 +4,13 @@ const NavBar = props => {
   return (
     <nav>
       <Link to="/">
-        <button>Home</button>
+        <button className="button">Home</button>
       </Link>
 
       <Link to="/sign-in">
-        <button>{!props.user ? `Sign in` : `My page`}</button>
+        <button className="button">
+          {!props.user ? `Sign in` : `My page`}
+        </button>
       </Link>
     </nav>
   );

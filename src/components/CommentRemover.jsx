@@ -22,12 +22,18 @@ class CommentRemover extends Component {
     return (
       <div>
         {!this.state.isDelete ? (
-          <button onClick={this.handleClick}>delete</button>
+          <button onClick={this.handleClick} className="button">
+            delete
+          </button>
         ) : (
           <p>
             Are you sure you want to delete this comment?{" "}
-            <button onClick={this.handleDelete}>yes</button>
-            <button onClick={this.handleClick}>no</button>
+            <button onClick={this.handleDelete} className="button">
+              yes
+            </button>
+            <button onClick={this.handleClick} className="button">
+              no
+            </button>
           </p>
         )}
       </div>
