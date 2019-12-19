@@ -1,10 +1,26 @@
 import React, { Component } from "react";
+import { fetchAllTopics } from "../utils/api";
+import TopicCard from "./TopicCard";
 
 class SortBy extends Component {
-  state = { author: "", topic: "", sort_by: "created_at" };
+  state = { author: "", topic: "", sort_by: "created_at", topics: [] };
+
+  componentDidMount() {
+    this.getTopics();
+  }
+  getTopics = () => {
+    fetchAllTopics().then(topics => {
+      this.setState(() => {
+        return { topics };
+      });
+    });
+  };
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    this.setState(currentState => {
+      return { [name]: value };
+    });
   };
   handleSubmit = event => {
     event.preventDefault();
@@ -14,6 +30,7 @@ class SortBy extends Component {
       return { author: "" };
     });
   };
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -30,9 +47,9 @@ class SortBy extends Component {
         Topic:
         <select onChange={this.handleChange} name="topic">
           <option value={this.state.topic}>---</option>
-          <option>cooking</option>
-          <option>football</option>
-          <option>coding</option>
+          {this.state.topics.map(topic => {
+            return <TopicCard key={topic.slug} topic={topic.slug} />;
+          })}
         </select>
         Sort by:
         <select onChange={this.handleChange} name="sort_by">

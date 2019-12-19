@@ -46,3 +46,9 @@ exports.deleteComment = comment_id => {
     return data;
   });
 };
+
+exports.fetchAllTopics = () => {
+  return axios.get(`${baseUrl}/topics`).then(({ data }) => {
+    return data.topics;
+  });
+};
