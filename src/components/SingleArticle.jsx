@@ -5,6 +5,7 @@ import Loader from "./Loader";
 import * as api from "../utils/api";
 import ErrDisplayer from "./ErrDisplayer";
 import Voter from "./Voter";
+import { formatTime } from "../utils/utils";
 
 class SingleArticle extends Component {
   state = { article: {}, isLoading: true, err: "" };
@@ -26,9 +27,9 @@ class SingleArticle extends Component {
 
   render() {
     const { article, isLoading, err } = this.state;
-
     if (isLoading) return <Loader />;
     if (err) return <ErrDisplayer err={err} />;
+    const time = formatTime(article.created_at);
     return (
       <article>
         <div className="single-article">
@@ -37,7 +38,7 @@ class SingleArticle extends Component {
             <h1> {article.title}</h1>
           </Link>
           <p className="grey-italic">
-            posted by {article.author}. posted time: {article.created_at}
+            posted by {article.author} date: {time}
           </p>
           <p>{article.body}</p>
           <Voter id={this.props.article_id} votes={article.votes} />

@@ -24,7 +24,7 @@ class CommentCard extends Component {
     return (
       <div className="single-comment">
         <p className="grey-italic">
-          created by {author} {time}
+          created by {author} date: {time}
         </p>
         <p>{body}</p>
         <Voter id={comment_id} votes={votes} type="comments" /> <br />

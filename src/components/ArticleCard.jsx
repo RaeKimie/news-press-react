@@ -24,7 +24,7 @@ const ArticleCard = ({
       <p>comments: {comment_count}</p>
 
       <p className="grey-italic">
-        created by {author} {time}
+        posted by {author} date: {time}
       </p>
       <Voter id={article_id} votes={votes} type="articles" />
     </div>
