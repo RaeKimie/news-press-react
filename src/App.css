@@ -22,7 +22,17 @@ input {
   padding: 5px 15px;
 }
 
-.color:hover {
+.selected-plus,
+.selected-minus {
+  background-color: lightgrey;
+  border: 1px solid grey;
+  color: black;
+  padding: 5px 17px;
+  float: center;
+  border-radius: 2px;
+}
+
+.pointer:hover {
   cursor: pointer;
 }
 

@@ -18,7 +18,7 @@ class Voter extends Component {
     return (
       <div className="btn-group">
         <button
-          className="btn color"
+          className={this.state.newVote > 0 ? "selected-plus" : "btn pointer"}
           onClick={this.handleClick}
           value={1}
           disabled={this.state.newVote > 0}
@@ -29,7 +29,7 @@ class Voter extends Component {
           {this.props.votes + this.state.newVote}
         </button>
         <button
-          className="btn color"
+          className={this.state.newVote < 0 ? "selected-minus" : "btn pointer"}
           onClick={this.handleClick}
           value={-1}
           disabled={this.state.newVote < 0}
