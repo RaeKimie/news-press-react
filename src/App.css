@@ -1,4 +1,5 @@
-.btn {
+.btn,
+.btn-bold {
   background-color: white;
   border: 1px solid grey;
   color: black;
@@ -6,7 +7,9 @@
   float: center;
   border-radius: 2px;
 }
-
+.btn-bold {
+  font-weight: bold;
+}
 .btn-group:after {
   content: "";
   clear: both;
@@ -24,7 +27,7 @@ input {
 
 .selected-plus,
 .selected-minus {
-  background-color: lightgrey;
+  background-color: #eaecee;
   border: 1px solid grey;
   color: black;
   padding: 5px 17px;
@@ -83,6 +86,20 @@ nav {
 .left {
   margin-left: 5px;
 }
+.op-link {
+  text-decoration: none;
+  color: #2471a3;
+}
+.link:hover {
+  color: #1c2833;
+}
+.link {
+  text-decoration: none;
+  color: #1c2833;
+}
+.link:hover {
+  color: #2471a3;
+}
 .button {
   background-color: white;
   border: 1px solid grey;
@@ -91,7 +108,9 @@ nav {
   margin-right: 5px;
   border-radius: 2px;
 }
-
+.button:hover {
+  cursor: pointer;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

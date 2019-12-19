@@ -34,7 +34,7 @@ class SingleArticle extends Component {
       <article>
         <div className="single-article">
           <p className="grey-italic">{article.topic}</p>
-          <Link to={`/articles/${article.article_id}`}>
+          <Link to={`/articles/${article.article_id}`} className="link">
             <h1> {article.title}</h1>
           </Link>
           <p className="grey-italic">
@@ -42,7 +42,10 @@ class SingleArticle extends Component {
           </p>
           <p>{article.body}</p>
           <Voter id={this.props.article_id} votes={article.votes} />
-          <Link to={`/articles/${article.article_id}/comments`}>
+          <Link
+            to={`/articles/${article.article_id}/comments`}
+            className="link"
+          >
             <p>{article.comment_count} comments </p>
           </Link>
         </div>

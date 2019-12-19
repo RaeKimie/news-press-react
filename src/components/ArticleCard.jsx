@@ -17,7 +17,7 @@ const ArticleCard = ({
     <div className="single-article">
       <p className="grey-italic">{topic}</p>
 
-      <Link to={`/articles/${article_id}`}>
+      <Link to={`/articles/${article_id}`} className="link">
         <h2>{title}</h2>
       </Link>
 

@@ -25,7 +25,10 @@ class Voter extends Component {
         >
           +
         </button>
-        <button className="btn" disabled={true}>
+        <button
+          className={this.state.newVote !== 0 ? "btn-bold" : "btn"}
+          disabled={true}
+        >
           {this.props.votes + this.state.newVote}
         </button>
         <button
