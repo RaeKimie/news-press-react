@@ -46,7 +46,9 @@ class SingleArticle extends Component {
             to={`/articles/${article.article_id}/comments`}
             className="link"
           >
-            <p>{article.comment_count} comments </p>
+            <button className="btn margin-top">
+              {article.comment_count} comments{" "}
+            </button>
           </Link>
         </div>
         <Router>
