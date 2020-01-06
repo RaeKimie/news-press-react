@@ -3,6 +3,7 @@ import Loader from "./Loader";
 import CommentCard from "./CommentCard";
 import * as api from "../utils/api";
 import CommentAdder from "./CommentAdder";
+import ScrollUpButton from "react-scroll-up-button";
 
 class CommentList extends Component {
   state = { comments: [], isLoading: true };
@@ -47,6 +48,7 @@ class CommentList extends Component {
             />
           );
         })}
+        <ScrollUpButton />
       </div>
     );
   }

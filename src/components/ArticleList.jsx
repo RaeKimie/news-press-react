@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Loader from "./Loader";
 import SortBy from "./SortBy";
 import * as api from "../utils/api";
-
+import ScrollUpButton from "react-scroll-up-button";
 import ArticleCard from "./ArticleCard";
 import ErrDisplayer from "./ErrDisplayer";
 
@@ -81,6 +81,7 @@ class ArticleList extends Component {
         {articles.map(article => {
           return <ArticleCard key={article.article_id} {...article} />;
         })}
+        <ScrollUpButton />
       </article>
     );
   }
