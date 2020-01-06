@@ -5,6 +5,8 @@
 select {
   margin: 40px;
   background-color: white;
+  border-radius: 4px;
+  padding: 3px 5px;
 }
 .space-right {
   margin-right: 5px;

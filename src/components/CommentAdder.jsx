@@ -49,7 +49,7 @@ class CommentAdder extends Component {
             name="body"
             value={this.state.body}
             onChange={this.handleChange}
-            placeholder={this.state.err && "Please write a comment."}
+            placeholder={this.state.err && "Please leave a comment."}
           />
         </label>
 
