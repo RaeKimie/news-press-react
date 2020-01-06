@@ -75,11 +75,11 @@ class SignInUser extends Component {
                 type="text"
                 value={this.state.user.username}
                 onChange={this.handleChange}
-                className="left "
+                className="space-left "
               />
             </label>
-            <p className="grey-italic">e.g. tickle122 or jessjelly</p>
-            <button className="button">Sign in</button>
+            <p className="grey-italic margin-top">e.g. grumpy19 or jessjelly</p>
+            <button className="button margin-top">Sign in</button>
           </form>
         )}
       </main>

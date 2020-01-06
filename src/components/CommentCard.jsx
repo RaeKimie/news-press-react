@@ -22,7 +22,7 @@ class CommentCard extends Component {
         </div>
       );
     return (
-      <div className="single-comment">
+      <div className="single-comment break-word">
         <p className="grey-italic">
           created by {author} date: {time}
         </p>

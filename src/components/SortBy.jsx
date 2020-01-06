@@ -33,7 +33,7 @@ class SortBy extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="search-bar">
         <label>
           Search by Author:
           <input
@@ -41,18 +41,26 @@ class SortBy extends Component {
             name="author"
             onChange={this.handleChange}
             value={this.state.author}
-            className="left"
+            className="space-left space-right margin-top"
           />
         </label>
         Topic:
-        <select onChange={this.handleChange} name="topic">
+        <select
+          onChange={this.handleChange}
+          name="topic"
+          className="space-left space-right"
+        >
           <option value={this.state.topic}>---</option>
           {this.state.topics.map(topic => {
             return <TopicCard key={topic.slug} topic={topic.slug} />;
           })}
         </select>
         Sort by:
-        <select onChange={this.handleChange} name="sort_by">
+        <select
+          onChange={this.handleChange}
+          name="sort_by"
+          className="space-left space-right"
+        >
           <option value={this.state.sort_by}>recent</option>
           <option value="votes">popular</option>
           <option value="comment_count">controversial</option>

@@ -14,7 +14,7 @@ const ArticleCard = ({
 }) => {
   const time = formatTime(created_at);
   return (
-    <div className="single-article">
+    <div className="single-article ">
       <p className="grey-italic">{topic}</p>
 
       <Link to={`/articles/${article_id}`} className="link">

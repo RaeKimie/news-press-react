@@ -1,8 +1,25 @@
+.App > * {
+  margin: auto;
+}
+
+select {
+  margin: 40px;
+  background-color: white;
+}
+.space-right {
+  margin-right: 5px;
+}
+.space-left {
+  margin-left: 5px;
+}
+.margin-top {
+  margin-top: 30px;
+}
 .btn,
 .btn-bold {
   background-color: white;
-  border: 1px solid grey;
-  color: black;
+  border: 1px solid #dbd9d2;
+  color: #403b3b;
   padding: 5px 17px;
   float: center;
   border-radius: 2px;
@@ -20,16 +37,16 @@
   border-right: none;
 }
 input {
-  border: 1px solid grey;
+  border: 1px solid #8c8c8c;
   border-radius: 4px;
   padding: 5px 15px;
 }
 
 .selected-plus,
 .selected-minus {
-  background-color: #eaecee;
-  border: 1px solid grey;
-  color: black;
+  background-color: #dbd8d8;
+  border: 1px solid #8c8c8c;
+  color: #403b3b;
   padding: 5px 17px;
   float: center;
   border-radius: 2px;
@@ -50,45 +67,61 @@ input {
 .comment-area {
   width: 80%;
   min-height: 80px;
-  overflow-y: auto;
+  background-color: #f6f6f4;
 }
 .grey-italic {
-  color: grey;
+  color: #8c8c8c;
   font-style: italic;
 }
 .user-login {
+  max-width: 80%;
   text-align: center;
-  padding: 30px;
-  margin: 0px 40px 10px 40px;
+  padding: 100px 40px;
+  margin: 2% auto;
   border-style: solid;
   border-width: 1px;
-  border-color: lightgrey;
+  border-color: #dbd9d2;
+  background-color: #f6f6f4;
 }
-.single-article,
+
 .single-comment {
+  background-color: #dbd9d2;
+  max-width: 80%;
   text-align: left;
-  padding: 30px;
-  margin: 0px 40px 10px 40px;
+  padding: 40px;
+  margin: 2% auto;
   border-style: solid;
   border-width: 1px;
-  border-color: lightgrey;
+  border-color: #dbd9d2;
+}
+.single-article {
+  background-color: #f6f6f4;
+  max-width: 80%;
+  text-align: left;
+  padding: 40px;
+  margin: 2% auto;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dbd9d2;
+}
+.break-word {
+  word-break: break-all;
 }
 header {
+  max-width: 80%;
   padding: 40px;
   border-style: solid;
-  border-width: 5px;
-  border-color: lightgrey;
+  border-width: 3px;
+  border-color: #dbd9d2;
   margin-bottom: 20px;
 }
 nav {
   padding-top: 10px;
 }
-.left {
-  margin-left: 5px;
-}
+
 .op-link {
   text-decoration: none;
-  color: #2471a3;
+  color: #8c8c8c;
 }
 .link:hover {
   color: #1c2833;
@@ -98,12 +131,12 @@ nav {
   color: #1c2833;
 }
 .link:hover {
-  color: #2471a3;
+  color: #8c8c8c;
 }
 .button {
   background-color: white;
-  border: 1px solid grey;
-  color: black;
+  border: 1px solid #8c8c8c;
+  color: #241c15;
   padding: 5px 17px;
   margin-right: 5px;
   border-radius: 2px;

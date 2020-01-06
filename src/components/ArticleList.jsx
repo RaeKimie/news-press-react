@@ -76,7 +76,6 @@ class ArticleList extends Component {
     return (
       <article>
         <SortBy addSorter={this.addSorter} isSorting={this.state.isSorting} />
-        <br />
 
         {articles.map(article => {
           return <ArticleCard key={article.article_id} {...article} />;

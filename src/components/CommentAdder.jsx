@@ -43,19 +43,17 @@ class CommentAdder extends Component {
         <label>
           Post a new comment
           <br />
-          <input
+          <textarea
             className="comment-area"
             type="text"
             name="body"
             value={this.state.body}
             onChange={this.handleChange}
-            placeholder={
-              this.state.err && "Oops! Don't forget to leave a comment!"
-            }
+            placeholder={this.state.err && "Please write a comment."}
           />
         </label>
 
-        <button className="button left" disabled={this.state.isLoading}>
+        <button className="button space-left" disabled={this.state.isLoading}>
           {!this.state.isLoading ? "Add" : "..."}
         </button>
       </form>
