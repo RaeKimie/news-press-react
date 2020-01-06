@@ -25,7 +25,7 @@ class ArticleList extends Component {
       prevState.author !== this.state.author ||
       prevState.topic !== this.state.topic ||
       prevState.sort_by !== this.state.sort_by ||
-      prevState.sort_by === this.state.sort_by
+      prevState.isSorting !== this.state.isSorting
     )
       this.getAllArticles();
     if (prevState.err)
